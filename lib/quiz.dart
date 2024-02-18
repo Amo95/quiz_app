@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:quiz_app/question_screen.dart';
 import 'package:quiz_app/start_screen.dart';
 
 class Quiz extends StatefulWidget {
@@ -27,9 +26,15 @@ class _QuizState extends State<Quiz> {
 
   @override
   Widget build(context) {
-    final screenWidget = activeScreen == 'active-screen'
-                  ? StartScreen(switchScreen)
-                  : const QuestionScreen();
+
+    Widget screenWidget = StartScreen(switchScreen);
+
+    if(activeScreen == "questions-screen"){
+      screenWidget = StartScreen(switchScreen);
+    }
+    // final screenWidget = activeScreen == 'active-screen'
+    //               ? StartScreen(switchScreen)
+    //               : const QuestionScreen();
     
     return MaterialApp(
           home: Scaffold(
